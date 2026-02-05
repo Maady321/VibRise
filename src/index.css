@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@theme {
+  --font-romantic: "Dancing Script", cursive;
+  --font-body: "Inter", sans-serif;
+
+  --color-custom-pink: #ff7eb3;
+  --color-custom-purple: #ff758c;
+  --color-custom-peach: #ff7eb3;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-fast: float 4s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+}
+
+@layer base {
+  body {
+    /* Use the font utility classes directly */
+    @apply font-body bg-gradient-to-br from-pink-100 via-purple-100 to-rose-100 text-gray-800 antialiased overflow-x-hidden min-h-screen selection:bg-rose-300 selection:text-rose-900;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/30 backdrop-blur-md border border-white/40 shadow-xl rounded-2xl;
+  }
+  
+  .glass-card {
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+
+  .btn-primary {
+    @apply px-8 py-3 bg-rose-500 text-white font-semibold rounded-full shadow-lg hover:bg-rose-600 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:scale-95 flex items-center gap-2 justify-center;
+  }
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #ec4899, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #f43f5e;
+  border-radius: 4px;
+}
