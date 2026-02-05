@@ -23,24 +23,24 @@ const Landing = () => {
                 rotate: [0, 5, -5, 0]
             }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="text-rose-500 text-6xl flex gap-4 items-center justify-center"
+            className="text-rose-500 text-5xl md:text-6xl flex gap-4 items-center justify-center mb-6"
         >
             <FaGlobeAmericas className="text-blue-400" />
-            <div className="flex flex-col items-center text-sm gap-1 text-gray-400">
-                <span className="border-t-2 border-dashed border-gray-400 w-16"></span>
+            <div className="flex flex-col items-center text-xs md:text-sm gap-1 text-gray-400">
+                <span className="border-t-2 border-dashed border-gray-400 w-12 md:w-16"></span>
                 <FaPlane className="text-rose-500 animate-float-fast" />
             </div>
             <FaGlobeAmericas className="text-rose-400" />
         </motion.div>
 
         <motion.h1 
-          className="text-5xl md:text-7xl font-romantic text-gradient font-bold leading-tight"
+          className="text-4xl md:text-7xl font-romantic text-gradient font-bold leading-tight px-2"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
           Miles Apart...<br/>
-          <span className="text-4xl md:text-6xl text-rose-500">Connected at Heart, Rowdy</span>
+          <span className="text-3xl md:text-6xl text-rose-500 block mt-2">Connected at Heart, Rowdy</span>
         </motion.h1>
         
         <motion.p 

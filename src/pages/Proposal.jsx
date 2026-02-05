@@ -42,7 +42,7 @@ const Proposal = () => {
           <span className="text-3xl md:text-5xl text-purple-600 block mt-4">(Even from a distance?)</span>
         </h1>
         
-        <div className="flex flex-col md:flex-row justify-center items-center gap-10 w-full relative h-[100px] md:h-auto">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-10 w-full relative min-h-[200px] md:min-h-auto mt-8 md:mt-0">
           <Button 
             onClick={handleYesClick}
             className="w-48 text-xl font-bold z-10 hover:scale-110 active:scale-95 transition-transform"
@@ -54,12 +54,15 @@ const Proposal = () => {
             style={{ x: noBtnPosition.x, y: noBtnPosition.y }}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
             onHoverStart={moveNoButton}
+            onTouchStart={moveNoButton} // Add touch support
             onClick={moveNoButton}
-            className="absolute md:static z-20"
+            className="static md:relative z-20"
           >
              <Button 
                 variant="outline" 
-                className="w-48 text-xl"
+                className="w-48 text-xl bg-white/80"
+                // Prevent default click on mobile to avoid triggering if it doesn't move fast enough
+                onTouchEnd={(e) => e.preventDefault()} 
             >
                 {getNoButtonText()}
             </Button>
