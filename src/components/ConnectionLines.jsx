@@ -32,8 +32,8 @@ const ConnectionLines = () => {
         </defs>
 
         {/* Location Dots */}
-        <motion.circle cx="10" cy="50" r="1.5" fill="#f43f5e" animate={{ r: [1, 2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
-        <motion.circle cx="90" cy="50" r="1.5" fill="#8b5cf6" animate={{ r: [1, 2, 1] }} transition={{ duration: 2, repeat: Infinity, delay: 1 }} />
+        <motion.circle cx="10" cy="50" r="1.5" fill="#f43f5e" initial={{ r: 1 }} animate={{ r: [1, 2, 1] }} transition={{ duration: 2, repeat: Infinity }} />
+        <motion.circle cx="90" cy="50" r="1.5" fill="#8b5cf6" initial={{ r: 1 }} animate={{ r: [1, 2, 1] }} transition={{ duration: 2, repeat: Infinity, delay: 1 }} />
       </svg>
     </div>
   );

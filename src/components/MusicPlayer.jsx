@@ -1,25 +1,61 @@
-import { useState, useRef } from 'react';
-import { FaMusic, FaPause } from 'react-icons/fa';
+import { useState, useRef, useEffect } from "react";
+import { FaMusic, FaPause } from "react-icons/fa";
 
 const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
 
+
   const togglePlay = () => {
     if (isPlaying) {
       audioRef.current.pause();
     } else {
-      audioRef.current.play().catch(error => {
-        console.log("Audio playback failed:", error);
+      audioRef.current.play().catch((error) => {
+        console.error("Audio playback failed:", error);
+        alert("Could not play audio. Please check your browser settings and allow audio playback.");
       });
     }
     setIsPlaying(!isPlaying);
   };
 
+  // Debug audio loading
+  useEffect(() => {
+    const audio = audioRef.current;
+    
+    const handleLoadedData = () => {
+      console.log('Audio loaded successfully');
+    };
+    
+    const handleError = (e) => {
+      console.error('Audio error:', e);
+    };
+    
+    const handleCanPlay = () => {
+      console.log('Audio can play');
+    };
+
+    if (audio) {
+      audio.addEventListener('loadeddata', handleLoadedData);
+      audio.addEventListener('error', handleError);
+      audio.addEventListener('canplay', handleCanPlay);
+    }
+
+    // Cleanup function to prevent memory leaks
+    return () => {
+      if (audio) {
+        audio.removeEventListener('loadeddata', handleLoadedData);
+        audio.removeEventListener('error', handleError);
+        audio.removeEventListener('canplay', handleCanPlay);
+      }
+    };
+  }, []);
+
+
   return (
     <div className="fixed top-5 right-5 z-50">
-      <audio ref={audioRef} loop>
-        <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-piano-intro-115.mp3" type="audio/mp3" />
+      <audio ref={audioRef} loop preload="auto">
+        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3" />
+        <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3" />
         Your browser does not support the audio element.
       </audio>
       <button

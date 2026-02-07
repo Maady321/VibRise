@@ -35,6 +35,7 @@ const Landing = () => {
 
         <motion.h1 
           className="text-4xl md:text-7xl font-romantic text-gradient font-bold leading-tight px-2"
+          style={{ textShadow: '0 2px 10px rgba(0,0,0,0.1)' }}
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3 }}
